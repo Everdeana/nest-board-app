@@ -1,6 +1,7 @@
-import { BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BoardStatus } from './boards.model';
 
+@Entity()
 export class Board extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,4 +14,7 @@ export class Board extends BaseEntity {
 
   @Column()
   status: BoardStatus;
+
+  @Column({ nullable: true })
+  imagePath: string;
 }
