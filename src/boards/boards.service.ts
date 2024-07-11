@@ -2,12 +2,12 @@ import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 // Local Memory가 아니라 DB를 사용하기 때문에 board.model에 있는 Board가 아니라 board.entity에 있는 Board를 사용한다.
 // import { Board, BoardStatus } from './boards.model';
 // import { v1 as uuid } from 'uuid';
+// import { Repository } from 'typeorm';
 import { BoardStatus } from './boards.model';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardRepository } from './board.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Board } from './board.entity';
-import { Repository } from 'typeorm';
 import { UpdateBoardDto } from './dto/update-board.dto';
 
 @Injectable()
@@ -70,7 +70,6 @@ export class BoardsService {
     private boardRepository: BoardRepository,
   ) {}
 
-  // async createBoard(createBoardDto: CreateBoardDto): Promise<Board> { // await 사용하지 않음 -> XasyncX
   async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
     /* board.repository에서 처리
     // const { title, description } = createBoardDto;
@@ -81,6 +80,8 @@ export class BoardsService {
     // });
 
     // await this.boardRepository.save(board);*/
+    const today = new Date();
+    console.log(today);
     return this.boardRepository.createBoard(createBoardDto);
   }
 

@@ -9,7 +9,7 @@ import { DataSource } from 'typeorm';
 // import { BoardRepository } from './board.repository';
 // import { DataSource } from 'typeorm';
 @Module({
-  imports: [TypeOrmModule.forFeature([Board])], // 이렇게 등록하면 데코레이터 없이도 인식 가능?
+  imports: [TypeOrmModule.forFeature([Board])], // 이렇게 하면 데코레이터 없이도 인식 가능?
   controllers: [BoardsController],
   providers: [
     BoardsService,
